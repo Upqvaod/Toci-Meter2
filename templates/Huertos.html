@@ -1,195 +1,191 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información de Huertos</title>
+    <title>Inicio</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo_apartados.css">
     <style>
-        .plant-card .card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            border: 2px solid black;
+        /* Estilo adicional para la barra fija */
+        .navbar.fixed-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .huerta-img {
+            width: 50px;
+            height: 50px;
         }
 
-        .plant-card .card-img-top {
-            height: 350px;
-            object-fit: cover;
-        }
-
-        .plant-card .card-body {
-            flex-grow: 1;
-        }
-
-        .plant-card .card-title {
-            font-size: 1.25em;
-            margin-bottom: 10px;
-        }
-
-        .plant-card .card-text {
-            font-size: 0.9em;
-        }
-         .navbar-brand {
+        .navbar-brand {
             font-family: 'Dancing Script', cursive;
             font-size: 1.5em;
         }
     </style>
 </head>
 <body>
-    <!-- Panel de Navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3 fixed-top">
         <a class="navbar-brand" href="{{ url_for('inicio') }}">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('plantas') }}">Plantas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('herramientas') }}">Herramientas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('articulos') }}">Artículos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('citas') }}">Citas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('foro') }}">Foro</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('plantas') }}">Plantas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('herramientas') }}">Herramientas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('foro') }}">Foro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('articulos') }}">Artículos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('huertos') }}">Huertos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('citas') }}">Citas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <header class="bg-success text-white text-center py-4">
-        <h1 class="header-title">Información de Huertos</h1>
-    </header>
-
-    <main class="container my-4">
-        <div class="row">
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/hortalizas.jpeg') }}" class="card-img-top" alt="Huerto 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Hortalizas</h5>
-                        <p class="card-text">Este huerto se especializa en la producción de hortalizas frescas como tomates, zanahorias y lechugas.</p>
-                    </div>
-                </div>
+    <div class="container">
+        <h2>Registro de Huertas</h2>
+        <form id="huertaForm">
+            <div class="form-group">
+                <label for="nombre">Nombre de la Huerta:</label>
+                <input type="text" class="form-control" id="nombre" required>
             </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/frutas.jpg') }}" class="card-img-top" alt="Huerto 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Frutas</h5>
-                        <p class="card-text">Cultiva una variedad de árboles frutales, incluyendo manzanos, perales y naranjos.</p>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea class="form-control" id="descripcion" rows="3" required></textarea>
             </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/especias.jpg') }}" class="card-img-top" alt="Huerto 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Especias</h5>
-                        <p class="card-text">Dedicado a la producción de hierbas y especias como albahaca, tomillo y romero.</p>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="imagen">Imagen:</label>
+                <input type="file" class="form-control-file" id="imagen" required>
             </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/comestible.jpg') }}" class="card-img-top" alt="Huerto 4">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Flores Comestibles</h5>
-                        <p class="card-text">Cultiva flores comestibles como capuchinas, violetas y pensamientos, utilizadas en la cocina gourmet.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/urbano.jpg') }}" class="card-img-top" alt="Huerto 5">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto Urbano</h5>
-                        <p class="card-text">Huerto diseñado para ser cultivado en espacios reducidos como balcones y terrazas urbanas.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/raices.jpg') }}" class="card-img-top" alt="Huerto 6">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Raíces</h5>
-                        <p class="card-text">Enfocado en el cultivo de tubérculos como papas, remolachas y nabos.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/calabazas.jpeg') }}" class="card-img-top" alt="Huerto 7">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Calabazas</h5>
-                        <p class="card-text">Especializado en el cultivo de diversas variedades de calabazas y zapallos.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/legumbres.jpg') }}" class="card-img-top" alt="Huerto 8">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Legumbres</h5>
-                        <p class="card-text">Producción de legumbres como frijoles, lentejas y garbanzos, esenciales en la alimentación.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/medicinal.jpeg') }}" class="card-img-top" alt="Huerto 9">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Hierbas Medicinales</h5>
-                        <p class="card-text">Cultiva hierbas medicinales como la manzanilla, el ginseng y la valeriana, utilizadas en remedios naturales.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/bayas.jpg') }}" class="card-img-top" alt="Huerto 10">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Bayas</h5>
-                        <p class="card-text">Especializado en el cultivo de bayas como fresas, frambuesas y moras.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/acuaponia.jpg') }}" class="card-img-top" alt="Huerto 11">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto Acuapónico</h5>
-                        <p class="card-text">Combina el cultivo de plantas y la cría de peces en un sistema cerrado de recirculación de agua.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 plant-card">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='img/champiñones.jpeg') }}" class="card-img-top" alt="Huerto 12">
-                    <div class="card-body">
-                        <h5 class="card-title">Huerto de Champiñones</h5>
-                        <p class="card-text">Especializado en la producción de hongos comestibles como champiñones y setas shiitake.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <footer class="footer mt-5">
-        <p>&copy; 2024 Comunidad de Jardinería. Todos los derechos reservados.</p>
-    </footer>
-    </main>
-
+            <button type="submit" class="btn btn-primary">Añadir Huerta</button>
+        </form>
+        
+        <h2 class="mt-5">Lista de Huertas</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="huertaList">
+                <!-- Aquí se añadirán las huertas -->
+            </tbody>
+        </table>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("btn-plantas").addEventListener("click", function() {
+            window.location.href = "{{ url_for('plantas') }}";
+        });
+
+        document.getElementById("btn-herramientas").addEventListener("click", function() {
+            window.location.href = "{{ url_for('herramientas') }}";
+        });
+
+        document.getElementById("btn-foro").addEventListener("click", function() {
+            window.location.href = "{{ url_for('foro') }}";
+        });
+
+        document.getElementById("btn-articulos").addEventListener("click", function() {
+            window.location.href = "{{ url_for('articulos') }}";
+        });
+
+        document.getElementById("btn-huertos").addEventListener("click", function() {
+            window.location.href = "{{ url_for('huertos') }}";
+        });
+
+        document.getElementById("btn-citas").addEventListener("click", function() {
+            window.location.href = "{{ url_for('citas') }}";
+        });
+    });
+
+            // Lógica para añadir, editar y eliminar huertas
+            const huertaForm = document.getElementById('huertaForm');
+            const huertaList = document.getElementById('huertaList');
+
+            huertaForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const nombre = document.getElementById('nombre').value;
+                const descripcion = document.getElementById('descripcion').value;
+                const imagen = document.getElementById('imagen').files[0];
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td><img src="${e.target.result}" class="huerta-img" alt="Imagen de ${nombre}"></td>
+                        <td>${nombre}</td>
+                        <td>${descripcion}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm edit">Editar</button>
+                            <button class="btn btn-danger btn-sm delete">Eliminar</button>
+                        </td>
+                    `;
+
+                    huertaList.appendChild(newRow);
+
+                    // Limpiar el formulario
+                    huertaForm.reset();
+                }
+                reader.readAsDataURL(imagen);
+            });
+
+            huertaList.addEventListener('click', function(event) {
+                if (event.target.classList.contains('delete')) {
+                    const row = event.target.closest('tr');
+                    huertaList.removeChild(row);
+                }
+
+                if (event.target.classList.contains('edit')) {
+                    const row = event.target.closest('tr');
+                    const nombre = row.children[1].innerText;
+                    const descripcion = row.children[2].innerText;
+                    const imagen = row.children[0].children[0].src;
+
+                    document.getElementById('nombre').value = nombre;
+                    document.getElementById('descripcion').value = descripcion;
+
+                    huertaForm.addEventListener('submit', function updateHuerta(event) {
+                        event.preventDefault();
+
+                        row.children[1].innerText = document.getElementById('nombre').value;
+                        row.children[2].innerText = document.getElementById('descripcion').value;
+                        row.children[0].children[0].src = imagen;
+
+                        huertaForm.removeEventListener('submit', updateHuerta);
+                        huertaForm.reset();
+                    }, { once: true });
+                }
+            });
+    </script>
 </body>
 </html>
