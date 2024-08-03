@@ -52,6 +52,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+            
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('plantas') }}">Plantas</a>
                 </li>
@@ -59,24 +60,18 @@
                     <a class="nav-link" href="{{ url_for('herramientas') }}">Herramientas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('foro') }}">Foro</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('articulos') }}">Artículos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('huertos') }}">Huertos</a>
+                    <a class="nav-link" href="{{ url_for('huertos2') }}">Huertos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('citas') }}">Citas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Iniciar sesión</a>
+                    <a class="nav-link" href="{{ url_for('foro') }}">Foro</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Registrar</a>
-                </li>
-                
+            
             </ul>
         </div>
     </nav>
@@ -116,9 +111,9 @@
             </div>
             <div class="col-lg-6">
                 <button id="btn-articulos" class="btn-custom content-section bg-light-green">
-                    <img src="{{ url_for('static', filename='img/articulos.png  ') }}">
+                    <img src="{{ url_for('static', filename='img/articulos.png') }}">
                     <h2 class="section-title">Artículos</h2>
-                    <p>Ve los articulos para la jardineria y los precios sugeridos.</p>
+                    <p>Lee artículos sobre diversos temas relacionados con la jardinería y el cuidado de las plantas.</p>
                 </button>
             </div>
         </div>
@@ -168,7 +163,7 @@
         });
 
         document.getElementById("btn-huertos").addEventListener("click", function() {
-            window.location.href = "{{ url_for('huertos') }}";
+            window.location.href = "{{ url_for('huertos2') }}";
         });
 
         document.getElementById("btn-citas").addEventListener("click", function() {

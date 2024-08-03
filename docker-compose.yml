@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'tocimeter'
+    volumes:
+      - ./tocimeter.sql:/docker-entrypoint-initdb.d/tocimeter.sql
+    ports:
+      - "3006:3007"
+
+  pythonapp:
+    build: ./app
+    depends_on:
+      - mysql
+    ports:
+      - "4000:5000"
+    volumes:
+      - ./app:/app
+    environment:
+      FLASK_ENV: development

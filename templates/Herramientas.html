@@ -9,14 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo_apartados.css">
     <style>
-        
-        .navbar.fixed-top {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1030;
-        }
-
         .tool-card .card {
             height: 100%;
             display: flex;
@@ -30,7 +22,7 @@
         }
 
         .tool-card .card-body {
-            flex-grow: 5; /* Permite que el cuerpo de la tarjeta crezca para ocupar el espacio */
+            flex-grow: 1; /* Permite que el cuerpo de la tarjeta crezca para ocupar el espacio */
         }
 
         .tool-card .card-title {
@@ -40,11 +32,6 @@
 
         .tool-card .card-text {
             font-size: 0.9em;
-        }
-
-        .navbar-brand {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5em;
         }
     </style>
 </head>
@@ -57,28 +44,27 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-               
+                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('plantas') }}">Plantas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('herramientas') }}">Herramientas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('foro') }}">Foro</a>
-                </li>
+               
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('articulos') }}">Artículos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('huertos') }}">Huertos</a>
+                    <a class="nav-link" href="{{ url_for('huertos2') }}">Huertos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('citas') }}">Citas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    <a class="nav-link" href="{{ url_for('foro') }}">Foro</a>
                 </li>
+               
             </ul>
         </div>
     </nav>
@@ -95,7 +81,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Pala</h5>
                         <p class="card-text">La pala es una herramienta esencial para cavar y mover tierra. Es fundamental para preparar el terreno y plantar.</p>
-                
                     </div>
                 </div>
             </div>
